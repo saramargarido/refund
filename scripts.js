@@ -116,9 +116,18 @@ function updateTotals() {
     expensesTotal.innerHTML = ""
 
     expensesTotal.append(symbolBRL, total)
-    console.log(total)
   } catch (error) {
     alert("Não foi possível atualizar a lista de despesa")
     console.log(error)
   }
 }
+
+// evento que captura o clique nos items da lista
+expenseList.addEventListener("click", function(event) {
+  if(event.target.classList.contains("remove-icon")) {
+    const item = event.target.closest(".expense")
+    item.remove()
+  }
+
+  updateTotals()
+})
